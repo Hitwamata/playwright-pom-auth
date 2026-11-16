@@ -7,7 +7,7 @@ test.describe('Login', () => {
     await loginPage.abrir();
   });
 
-  test('deve entrar com credenciais válidas', async ({ loginPage, inventarioPage }) => {
+  test('deve entrar com credenciais válidas', { tag: '@smoke' }, async ({ loginPage, inventarioPage }) => {
     await loginPage.fazerLogin(utilizadorPadrao.nome, utilizadorPadrao.palavraPasse);
     await inventarioPage.validarPaginaCarregada();
   });

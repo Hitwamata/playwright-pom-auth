@@ -11,9 +11,3 @@ export const utilizadorBloqueado = {
   nome: 'locked_out_user',
   palavraPasse: 'secret_sauce',
 };
-
-export const dadosCheckout = {
-  primeiroNome: 'Eliazel',
-  ultimoNome: 'QA',
-  codigoPostal: '1000',
-};

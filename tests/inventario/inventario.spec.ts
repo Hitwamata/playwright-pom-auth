@@ -1,4 +1,5 @@
 import { test } from '../../src/fixtures/paginas.fixture';
+import { produtos } from '../../src/data/produtos';
 
 // Projeto "autenticado": a sessão vem do auth.setup.ts, sem passar pelo login.
 test.describe('Inventário', () => {
@@ -6,7 +7,7 @@ test.describe('Inventário', () => {
     await inventarioPage.abrir();
   });
 
-  test('deve abrir já autenticado, sem passar pelo login', async ({ inventarioPage }) => {
+  test('deve abrir já autenticado, sem passar pelo login', { tag: '@smoke' }, async ({ inventarioPage }) => {
     await inventarioPage.validarPaginaCarregada();
   });
 
@@ -26,11 +27,11 @@ test.describe('Inventário', () => {
   });
 
   test('deve adicionar e remover produtos do carrinho', async ({ inventarioPage }) => {
-    await inventarioPage.adicionarAoCarrinho('Sauce Labs Backpack');
-    await inventarioPage.adicionarAoCarrinho('Sauce Labs Bike Light');
+    await inventarioPage.adicionarAoCarrinho(produtos.mochila.nome);
+    await inventarioPage.adicionarAoCarrinho(produtos.luzBicicleta.nome);
     await inventarioPage.validarQuantidadeNoCarrinho(2);
 
-    await inventarioPage.removerDoCarrinho('Sauce Labs Backpack');
+    await inventarioPage.removerDoCarrinho(produtos.mochila.nome);
     await inventarioPage.validarQuantidadeNoCarrinho(1);
   });
 });

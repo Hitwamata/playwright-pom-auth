@@ -1,11 +1,6 @@
 import { expect, test, type Locator, type Page } from '@playwright/test';
 import { BasePage } from './BasePage';
-
-type DadosCheckout = {
-  primeiroNome: string;
-  ultimoNome: string;
-  codigoPostal: string;
-};
+import type { DadosCheckout } from '../data/checkout';
 
 export class CheckoutPage extends BasePage {
   readonly campoPrimeiroNome: Locator;

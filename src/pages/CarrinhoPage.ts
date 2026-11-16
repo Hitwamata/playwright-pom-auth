@@ -31,6 +31,26 @@ export class CarrinhoPage extends BasePage {
     }, { box: true });
   }
 
+  async validarCarrinhoVazio() {
+    await test.step('Validar que o carrinho está vazio', async () => {
+      await expect(this.itensCarrinho).toHaveCount(0);
+    }, { box: true });
+  }
+
+  async removerProduto(nomeProduto: string) {
+    await test.step(`Remover "${nomeProduto}" do carrinho`, async () => {
+      const item = this.itensCarrinho.filter({ hasText: nomeProduto });
+      await item.getByRole('button', { name: 'Remove' }).click();
+      await expect(item).toBeHidden();
+    }, { box: true });
+  }
+
+  async continuarAComprar() {
+    await test.step('Voltar à lista de produtos', async () => {
+      await this.botaoContinuarCompras.click();
+    }, { box: true });
+  }
+
   async irParaCheckout() {
     await test.step('Ir para o checkout', async () => {
       await this.botaoCheckout.click();
